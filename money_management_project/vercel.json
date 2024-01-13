@@ -1,0 +1,14 @@
+
+{
+    "builds": [{
+        "src": "money_management_project/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "money_management_project/wsgi.py"
+        }
+    ]
+}

@@ -1,0 +1,62 @@
+<!-- money_management_app/templates/money_management_app/base_generic.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Money Management{% endblock %}</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        header h1 {
+            color:black;
+            background-color: whitesmoke;
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Money Management</h1>
+        <!-- Navigation links can go here -->
+        <p></p>
+        {% if user and user.is_authenticated %}
+            <a href="{% url 'logout' %}">Logout</a>
+        {% endif %}
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Additional scripts and other elements can go here -->
+</body>
+</html>

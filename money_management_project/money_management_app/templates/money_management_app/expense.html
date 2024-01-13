@@ -1,0 +1,78 @@
+{% extends 'money_management_app/base_generic.html' %}
+{% load static %}
+
+{% block title %}Expense{% endblock %}
+
+{% block content %}
+    <style>
+        /* Add your custom styles for the expense form */
+        body {
+            background-image: url('{% static "money_management_app/images/image_4.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: white;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <h2>Add Expense</h2>
+    <form method="post" action="{% url 'expense' %}">
+        {% csrf_token %}
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" required>
+        <br>
+        <label for="category">Category:</label>
+        <input type="text" name="category" required>
+        <br>
+        <input type="submit" value="Add Expense">
+        <a href="{% url 'index' %}">Back to Summary</a>
+    </form>
+{% endblock %}
